@@ -4,6 +4,7 @@ import { Table, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import moment from 'moment';
 import { toast } from 'react-toastify';
+import jwt_decode from 'jwt-decode';
 
 const newUrl = 'https://userauthbackend.up.railway.app/';
 
@@ -44,6 +45,9 @@ function Dashboard() {
   };
 
   const handleBlock = async () => {
+    const token = localStorage.getItem('token');
+    const decoded = jwt_decode(token);
+    const email = decoded.email;
     try {
       await axios.post(
         `${newUrl}block-users`,
@@ -52,6 +56,9 @@ function Dashboard() {
           headers: { Authorization: localStorage.getItem('token') },
         }
       );
+      if (selectedRows.includes(email)) {
+        handleLogout();
+      }
 
       setSelectedRows([]);
       setSelectAll(false);
@@ -115,13 +122,26 @@ function Dashboard() {
       </div>
       <h1 className='title'>Dashboard</h1>
       <div className='toolbar'>
-        <Button variant='danger' onClick={handleBlock}>
+        <Button
+          variant='warning'
+          onClick={handleBlock}
+          disabled={!selectedRows.length > 0}
+          style={{ color: 'white' }}
+        >
           Block
         </Button>
-        <Button variant='success' onClick={handleUnblock}>
+        <Button
+          variant='success'
+          onClick={handleUnblock}
+          disabled={!selectedRows.length > 0}
+        >
           Unblock
         </Button>
-        <Button variant='outline-danger' onClick={handleDelete}>
+        <Button
+          variant='danger'
+          onClick={handleDelete}
+          disabled={!selectedRows.length > 0}
+        >
           Delete
         </Button>
       </div>
