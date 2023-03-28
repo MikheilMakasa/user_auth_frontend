@@ -44,6 +44,7 @@ function Login() {
             id='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -53,6 +54,7 @@ function Login() {
             id='password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
 

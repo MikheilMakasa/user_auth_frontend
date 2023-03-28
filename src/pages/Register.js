@@ -53,6 +53,7 @@ function Register() {
             id='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -62,6 +63,7 @@ function Register() {
             id='password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
         <button type='submit'>Register</button>
