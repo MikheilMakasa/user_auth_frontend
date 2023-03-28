@@ -43,11 +43,14 @@ function Dashboard() {
     );
     setSelectAll(false);
   };
-
-  const handleBlock = async () => {
+  const getMail = () => {
     const token = localStorage.getItem('token');
     const decoded = jwt_decode(token);
-    const email = decoded.email;
+    return decoded.email;
+  };
+
+  const handleBlock = async () => {
+    const email = getMail();
     try {
       await axios.post(
         `${newUrl}block-users`,
@@ -89,6 +92,7 @@ function Dashboard() {
   };
 
   const handleDelete = async () => {
+    const email = getMail();
     try {
       await axios.post(
         `${newUrl}delete-users`,
@@ -97,7 +101,9 @@ function Dashboard() {
           headers: { Authorization: localStorage.getItem('token') },
         }
       );
-
+      if (selectedRows.includes(email)) {
+        handleLogout();
+      }
       setSelectedRows([]);
       setSelectAll(false);
       getData();
