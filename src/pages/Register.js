@@ -23,6 +23,8 @@ function Register() {
 
       if (status === 200) {
         navigate('/login');
+      } else {
+        console.log(data);
       }
     } catch (error) {
       console.log(error.response.data);
