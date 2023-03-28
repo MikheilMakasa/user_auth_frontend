@@ -2,6 +2,10 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const test = 'http://localhost:5001/login';
+
+const newUrl = 'https://userauthbackend.up.railway.app/login';
+
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -11,13 +15,10 @@ function Login() {
     event.preventDefault();
 
     try {
-      const { data } = await axios.post(
-        'https://user-auth-backend.vercel.app/login',
-        {
-          email: email,
-          password: password,
-        }
-      );
+      const { data } = await axios.post(newUrl, {
+        email: email,
+        password: password,
+      });
 
       if (data.token) {
         localStorage.setItem('token', data.token);

@@ -4,6 +4,10 @@ import { Table, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import moment from 'moment';
 
+const test = 'http://localhost:5001';
+
+const newUrl = 'https://userauthbackend.up.railway.app/';
+
 function Dashboard() {
   const [users, setUsers] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
@@ -13,12 +17,9 @@ function Dashboard() {
 
   const getData = async () => {
     const token = localStorage.getItem('token');
-    const response = await axios.get(
-      'https://user-auth-backend.vercel.app/dashboard',
-      {
-        headers: { Authorization: `${token}` },
-      }
-    );
+    const response = await axios.get(`${newUrl}dashboard`, {
+      headers: { Authorization: `${token}` },
+    });
     setUsers(response.data.data); // set the users state to the retrieved data
   };
 
@@ -46,7 +47,7 @@ function Dashboard() {
   const handleBlock = async () => {
     try {
       const response = await axios.post(
-        'https://user-auth-backend.vercel.app/block-users',
+        `${newUrl}block-users`,
         { emailList: selectedRows },
         {
           headers: { Authorization: localStorage.getItem('token') },
@@ -65,7 +66,7 @@ function Dashboard() {
   const handleUnblock = async () => {
     try {
       const response = await axios.post(
-        'https://user-auth-backend.vercel.app/unblock-users',
+        `${newUrl}unblock-users`,
         { emailList: selectedRows },
         {
           headers: { Authorization: localStorage.getItem('token') },
@@ -84,7 +85,7 @@ function Dashboard() {
   const handleDelete = async () => {
     try {
       const response = await axios.post(
-        'https://user-auth-backend.vercel.app/delete-users',
+        `${newUrl}delete-users`,
         { emailList: selectedRows },
         {
           headers: { Authorization: localStorage.getItem('token') },
