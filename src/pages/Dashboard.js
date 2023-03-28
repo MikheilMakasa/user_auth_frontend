@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Table, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import moment from 'moment';
+import { toast } from 'react-toastify';
 
 const newUrl = 'https://userauthbackend.up.railway.app/';
 
@@ -52,12 +53,12 @@ function Dashboard() {
         }
       );
 
-      alert(response.data.message);
       setSelectedRows([]);
       setSelectAll(false);
       getData();
+      toast.success('User(s) have been blocked');
     } catch (error) {
-      console.log(error);
+      toast.error('something went wrong');
     }
   };
 
@@ -71,12 +72,12 @@ function Dashboard() {
         }
       );
 
-      alert(response.data.message);
       setSelectedRows([]);
       setSelectAll(false);
       getData();
+      toast.success('User(s) have been unblocked');
     } catch (error) {
-      console.log(error);
+      toast.error('something went wrong');
     }
   };
 
@@ -90,18 +91,19 @@ function Dashboard() {
         }
       );
 
-      alert(response.data.message);
       setSelectedRows([]);
       setSelectAll(false);
       getData();
+      toast.success('User(s) have been deleted');
     } catch (error) {
-      console.log(error);
+      toast.error('something went wrong');
     }
   };
 
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/login');
+    toast.success('logged out');
   };
 
   return (

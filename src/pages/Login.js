@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const newUrl = 'https://userauthbackend.up.railway.app/login';
 
@@ -20,14 +21,15 @@ function Login() {
 
       if (data.token) {
         localStorage.setItem('token', data.token);
+        toast.success('logged in');
         navigate('/dashboard');
       } else {
         // Handle error: No token returned from server
-        console.error('No token returned from server');
+        toast.error('Wrong email or password!');
       }
     } catch (error) {
       // Handle error: Request failed or returned a non-200 status
-      console.error(error.response?.data?.error ?? error.message);
+      toast.error('Wrong email or password!');
     }
   };
 

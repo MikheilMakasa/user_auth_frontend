@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const newUrl = 'https://userauthbackend.up.railway.app/register';
 
@@ -19,12 +20,12 @@ function Register() {
         email: email,
         password: password,
       });
-      console.log(data, status);
 
       if (status === 200) {
         navigate('/login');
+        toast.success('User registered successfully');
       } else {
-        console.log(data);
+        toast.error(data);
       }
     } catch (error) {
       console.log(error.response.data);
