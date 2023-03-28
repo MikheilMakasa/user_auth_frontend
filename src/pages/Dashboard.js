@@ -101,6 +101,7 @@ function Dashboard() {
           headers: { Authorization: localStorage.getItem('token') },
         }
       );
+
       if (selectedRows.includes(email)) {
         handleLogout();
       }
