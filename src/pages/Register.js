@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const newUrl = 'https://userauthbackend.up.railway.app/register';
+const newUrl = 'https://user-auth-backend.vercel.app/register';
 
 function Register() {
   const [name, setName] = useState('');

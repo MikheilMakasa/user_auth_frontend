@@ -4,7 +4,7 @@ import { Table, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import moment from 'moment';
 
-const newUrl = 'https://userauthbackend.up.railway.app/';
+const newUrl = 'https://user-auth-backend.vercel.app/';
 
 function Dashboard() {
   const [users, setUsers] = useState([]);
