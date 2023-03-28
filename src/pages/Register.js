@@ -25,7 +25,7 @@ function Register() {
         navigate('/login');
         toast.success('User registered successfully');
       } else {
-        toast.error(data);
+        toast.error(data.message);
       }
     } catch (error) {
       console.log(error.response.data);
