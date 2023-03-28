@@ -4,8 +4,6 @@ import { Table, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import moment from 'moment';
 
-const test = 'http://localhost:5001';
-
 const newUrl = 'https://userauthbackend.up.railway.app/';
 
 function Dashboard() {

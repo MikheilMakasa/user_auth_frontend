@@ -2,7 +2,6 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const test = 'http://localhost:5001/register';
 const newUrl = 'https://userauthbackend.up.railway.app/register';
 
 function Register() {

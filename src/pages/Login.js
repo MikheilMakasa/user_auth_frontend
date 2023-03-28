@@ -2,8 +2,6 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const test = 'http://localhost:5001/login';
-
 const newUrl = 'https://userauthbackend.up.railway.app/login';
 
 function Login() {
