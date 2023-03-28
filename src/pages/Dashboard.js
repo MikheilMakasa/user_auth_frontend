@@ -45,7 +45,7 @@ function Dashboard() {
 
   const handleBlock = async () => {
     try {
-      const response = await axios.post(
+      await axios.post(
         `${newUrl}block-users`,
         { emailList: selectedRows },
         {
@@ -64,7 +64,7 @@ function Dashboard() {
 
   const handleUnblock = async () => {
     try {
-      const response = await axios.post(
+      await axios.post(
         `${newUrl}unblock-users`,
         { emailList: selectedRows },
         {
@@ -83,7 +83,7 @@ function Dashboard() {
 
   const handleDelete = async () => {
     try {
-      const response = await axios.post(
+      await axios.post(
         `${newUrl}delete-users`,
         { emailList: selectedRows },
         {
