@@ -25,7 +25,7 @@ function Login() {
         navigate('/dashboard');
       } else {
         // Handle error: No token returned from server
-        toast.error('Wrong email or password!');
+        toast.error(data.error);
       }
     } catch (error) {
       // Handle error: Request failed or returned a non-200 status
