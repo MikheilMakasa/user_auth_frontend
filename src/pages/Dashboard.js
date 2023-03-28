@@ -20,7 +20,7 @@ function Dashboard() {
     const response = await axios.get(`${newUrl}dashboard`, {
       headers: { Authorization: `${token}` },
     });
-    setUsers(response.data.data); // set the users state to the retrieved data
+    setUsers(response.data.data);
   };
 
   useEffect(() => {
